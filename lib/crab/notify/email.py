@@ -35,6 +35,9 @@ class CrabNotifyEmail:
         self.base_url = base_url
 
         self.server = config_email['server']
+        self.tls = config_email['tls']
+        self.username = config_email['username']
+        self.password = config_email['password']
         self.from_ = config_email['from']
         self.subject_ok = config_email['subject_ok']
         self.subject_warning = config_email['subject_warning']
@@ -61,5 +64,8 @@ class CrabNotifyEmail:
                                 self.home, self.base_url), 'html'))
 
         smtp = SMTP(self.server)
+        if self.tls:
+            smtp.starttls()
+        smtp.login(self.username, self.password)
         smtp.sendmail(self.from_, to, message.as_string())
         smtp.quit()
