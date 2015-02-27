@@ -66,6 +66,7 @@ class CrabNotifyEmail:
         smtp = SMTP(self.server)
         if self.tls:
             smtp.starttls()
-        smtp.login(self.username, self.password)
+        if self.username:
+            smtp.login(self.username, self.password)
         smtp.sendmail(self.from_, to, message.as_string())
         smtp.quit()
