@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/res/fonts/font-awesome.css">
 <link rel="icon" href="/res/favicon.png" sizes="16x16" type="image/png">
 % if self.attr.scripts:
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 % for script in self.attr.scripts:
 %     if script.startswith('dyn:'):
 <script type="text/javascript" src="/dynres/${script[4:] | h}.js"></script>
